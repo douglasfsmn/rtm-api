@@ -359,6 +359,29 @@ function removeTags(listId, taskSeriesId, taskId, tags, user, callback) {
 }
 
 /**
+ * API Call: rtm.tasks.setTags
+ * @param {number} listId RTM List ID
+ * @param {number} taskSeriesId RTM Task Series ID
+ * @param {number} taskId RTM Task ID
+ * @param {string[]} tags Tags to Set.  An empty value removes any existing tags.
+ * @param {RTMUser} user RTM User
+ * @param {function} callback function(err)
+ * @private
+ */
+function setTags(listId, taskSeriesId, taskId, tags, user, callback) {
+  let params = {
+    timeline: user.timeline,
+    list_id: listId,
+    taskseries_id: taskSeriesId,
+    task_id: taskId,
+    tags: tags.join(',')
+  };
+  user.get('rtm.tasks.setTags', params, function(err) {
+    return callback(err);
+  });
+}
+
+/**
  * API Call: rtm.tasks.setDueDate
  * @param {number} listId RTM List ID
  * @param {number} taskSeriesId RTM Task Series ID

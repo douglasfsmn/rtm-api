@@ -269,6 +269,7 @@ class RTMUser {
    * - {@link RTMUser~tasks/addNotes|addNotes}
    * - {@link RTMUser~tasks/addTags|addTags}
    * - {@link RTMUser~tasks/removeTags|removeTags}
+   * - {@link RTMUser~tasks/setTags|setTags}
    * - {@link RTMUser~tasks/priority|priority}
    * - {@link RTMUser~tasks/decreasePriority|decreasePriority}
    * - {@link RTMUser~tasks/increasePriority|increasePriority}
@@ -276,7 +277,7 @@ class RTMUser {
    * - {@link RTMUser~tasks/setDueDate|setDueDate}
    * - {@link RTMUser~tasks/postpone|postpone}
    * - {@link RTMUser~tasks/setName|setName}
-   * @returns {{get: function, add:function, remove: function, complete: function, uncomplete: function, addNotes: function, addTags: function, removeTags: function, priority: function, decreasePriority: function, increasePriority: function, move: function, setDueDate: function, postpone: function, setName: function}}
+   * @returns {{get: function, add:function, remove: function, complete: function, uncomplete: function, addNotes: function, addTags: function, removeTags: function, setTags: function, priority: function, decreasePriority: function, increasePriority: function, move: function, setDueDate: function, postpone: function, setName: function}}
    */
   get tasks() {
     return require('./tasks.js')(this);

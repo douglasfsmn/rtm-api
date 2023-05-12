@@ -509,6 +509,41 @@ module.exports = function(user) {
   };
 
   /**
+   * Set the specified tag(s) in the Task.  Any previous tags will be overwritten.
+   * @param {int} index Task Index
+   * @param {string|string[]} tags Tags to set in Task.  An empty value removes any existing tags.
+   * @param {function} callback Callback function(err)
+   * @param {RTMError} callback.err RTM API Error Response, if encountered
+   * @function RTMUser~tasks/setTags
+   */
+  rtn.setTags = function(index, tags, callback) {
+
+    // Make sure tags is an array
+    if ( !Array.isArray(tags) ) {
+      tags = [tags];
+    }
+
+    // Get the Task
+    _getTaskInfo(index, function(err, listId, taskSeriesId, taskId) {
+      if ( err ) {
+        return callback(err);
+      }
+
+      // Set the Tags
+      return _tasks.setTags(
+        listId,
+        taskSeriesId,
+        taskId,
+        tags,
+        user,
+        callback
+      );
+
+    });
+
+  };
+
+  /**
    * Set the Due Date of the specified Task
    * @param {int} index Task Index
    * @param {string} due The Due Date of the Task (RTM parsed date)
